@@ -21,6 +21,9 @@ private slots:
 
 private:
     Ui::loginWindow *ui;
+
+signals:
+    void LoginSucces(QString username, QString password);
 };
 
 #endif // LOGINWINDOW_H

@@ -44,6 +44,7 @@ void loginWindow::on_pushButton_login_clicked()
     }
     else
     {
+        emit LoginSucces(username, password);
         this->hide();
     }
 

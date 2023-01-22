@@ -17,6 +17,13 @@ public:
 
 private:
     Ui::mainWindow *ui;
+    QString logedLogin;
+    QString logedPass;
+
+signals:
+
+public slots:
+    void ShowWindow(QString username, QString Password);
 };
 
 #endif // MAINWINDOW_H

@@ -12,3 +12,11 @@ mainWindow::~mainWindow()
 {
     delete ui;
 }
+
+void mainWindow::ShowWindow(QString username, QString password)
+{
+    mainWindow::show();
+
+    logedLogin = username;
+    logedPass = password;
+}
