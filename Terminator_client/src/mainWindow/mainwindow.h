@@ -19,6 +19,11 @@ private:
     Ui::mainWindow *ui;
     QString logedLogin;
     QString logedPass;
+    QJsonDocument listNames;
+    QJsonDocument currentList;
+
+    void LoadJSON();
+
 
 signals:
 

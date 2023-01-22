@@ -14,6 +14,8 @@
 #include <QUrlQuery>
 
 #include <QJsonObject>
+#include <QJsonDocument>
+
 
 
 networkAPI::networkAPI()
@@ -26,6 +28,8 @@ networkAPI::~networkAPI()
 
 }
 
+
+//check if login and password are correct
 bool networkAPI::CheckLogin(QString username, QString password)
 {
     QByteArray usernameByte = username.toUtf8();
@@ -58,6 +62,7 @@ bool networkAPI::CheckLogin(QString username, QString password)
     }   
 }
 
+//create a new user from given newusername and newpassword
 bool networkAPI::CreateUser(QString username, QString password, QString newUsername, QString newPassword)
 {
     QByteArray usernameByte = username.toUtf8();
@@ -94,7 +99,8 @@ bool networkAPI::CreateUser(QString username, QString password, QString newUsern
     }
 }
 
-QString networkAPI::GetData(QString username, QString password, QString listName, QString type)
+//get data from server in json form
+QJsonDocument networkAPI::GetData(QString username, QString password, QString listName, QString type)
 {
     QByteArray usernameByte = username.toUtf8();
     QByteArray passwordByte = password.toUtf8();
@@ -122,29 +128,27 @@ QString networkAPI::GetData(QString username, QString password, QString listName
 
     QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
 
-    if (status_code == "404")
-    {
-        return "ERROR";
-    }
-
     line = reply->readAll();
 
-    qDebug() << line;
+    QJsonDocument output = QJsonDocument::fromJson(line);
 
-    return line;
+    return output;
     
 }
 
-bool networkAPI::PutData(QString username, QString password, QString listName, QByteArray data)
+//create data on server from given json
+bool networkAPI::PutData(QString username, QString password, QString listName, QJsonDocument data)
 {
     return false;
 }
 
-bool networkAPI::PostData(QString username, QString password, QString listName, QByteArray data)
+//update json filed in database
+bool networkAPI::PostData(QString username, QString password, QString listName, QJsonDocument data)
 {
     return false;
 }
 
+//delete selected data by name
 bool networkAPI::DelData(QString username, QString password, QString listName)
 {
     QByteArray usernameByte = username.toUtf8();
@@ -179,6 +183,8 @@ bool networkAPI::DelData(QString username, QString password, QString listName)
     }
 }
 
+
+//copy data to be accesible to another user
 bool networkAPI::CopyData(QString username, QString password, QString listName, QString destUser)
 {
     QByteArray usernameByte = username.toUtf8();
