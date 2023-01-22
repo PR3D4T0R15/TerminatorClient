@@ -29,7 +29,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Terminator </string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../Terminator_client.qrc">
+    <normaloff>:/Terminator_client/src/img/logo.ico</normaloff>:/Terminator_client/src/img/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -126,7 +130,10 @@
               </size>
              </property>
              <property name="inputMethodHints">
-              <set>Qt::ImhHiddenText|Qt::ImhSensitiveData</set>
+              <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+             </property>
+             <property name="echoMode">
+              <enum>QLineEdit::Password</enum>
              </property>
             </widget>
            </item>
@@ -181,6 +188,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../Terminator_client.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,5 +1,6 @@
 ﻿#include "loginwindow.h"
 #include "network.h"
+#include "newUser/newuser.h"
 #include "ui_loginwindow.h"
 #include <QMessageBox>
 #include <QApplication>
@@ -12,11 +13,13 @@ loginWindow::loginWindow(QWidget* parent) :
     QPixmap pix(":/Terminator_client/src/img/logo.png");
     ui->label_img->setPixmap(pix);
     ui->label_img->setScaledContents(true);
+    
 }
 
 loginWindow::~loginWindow()
 {
     delete ui;
+    
 }
 
 void loginWindow::on_pushButton_login_clicked()
@@ -47,6 +50,7 @@ void loginWindow::on_pushButton_login_clicked()
 
 void loginWindow::on_pushButton_nowy_clicked()
 {
-    
+    newUser window;
+    window.exec();
 }
 

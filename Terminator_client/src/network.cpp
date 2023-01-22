@@ -75,7 +75,7 @@ bool networkAPI::CreateUser(QString username, QString password, QString newUsern
     request.setRawHeader("LOGIN", usernameByte);
     request.setRawHeader("PASS", passwordByte);
     request.setRawHeader("newLOGIN", newUsernameByte);
-    request.setRawHeader("newPASS", passwordByte);
+    request.setRawHeader("newPASS", newPasswordByte);
 
     QNetworkReply* reply = manager->put(request, data);
     QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
