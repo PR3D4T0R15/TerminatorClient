@@ -91,6 +91,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\loginWindows\loginwindow.cpp" />
+    <ClCompile Include="src\mainWindow\mainwindow.cpp" />
     <ClCompile Include="src\network.cpp" />
     <ClCompile Include="src\newUser\newuser.cpp" />
     <QtRcc Include="Terminator_client.qrc" />
@@ -101,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="src\loginWindows\loginwindow.ui" />
+    <QtUic Include="src\mainWindow\mainwindow.ui" />
     <QtUic Include="src\newUser\newuser.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\newUser\newuser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="src\mainWindow\mainwindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
