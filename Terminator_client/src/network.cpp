@@ -1,6 +1,5 @@
 #include "network.h"
 
-#include <QtCore/QCoreApplication>
 #include <QString>
 #include<QNetworkAccessManager>
 #include<QNetworkRequest>
@@ -12,39 +11,48 @@
 #include<QDebug>
 #include<QEventLoop>
 #include<QObject>
-#include <QJsonArray>
 
-network::network()
+
+networkAPI::networkAPI()
 {
 
 }
 
-network::~network()
+networkAPI::~networkAPI()
 {
 
 }
 
-bool network::CheckLogin(QString username, QString password)
+bool networkAPI::CheckLogin(QString username, QString password)
 {
+    QByteArray usernameByte = username.toUtf8();
+    QByteArray passwordByte = password.toUtf8();
+
     QNetworkAccessManager* manager = new QNetworkAccessManager;
     QNetworkRequest request;
     QByteArray line;
-    QByteArray status;
     QEventLoop eventLoop;
-
-    QByteArray username = useraname;
-    QByteArray password = password;
 
     request.setUrl(QUrl("http://192.168.219.132:8080/login"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    request.setHeader("LOGIN", username);
-    request.setHeader("PASS", password);
+    request.setRawHeader("LOGIN", usernameByte);
+    request.setRawHeader("PASS", passwordByte);
+
     QNetworkReply* reply = manager->get(request);
     QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
     eventLoop.exec();
-    line = reply->readAll();
-    status = reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute);
 
-    qDebug() << "status: " << status;
-    qDebug() << "response:" << line;
+    //zwraca kod 
+    QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
+    
+    if (status_code == "202")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+    
 }

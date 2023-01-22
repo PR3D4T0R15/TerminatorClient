@@ -52,6 +52,9 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
     <Image Include="src\img\add.png">
       <Filter>Resource Files</Filter>
     </Image>

@@ -1,13 +1,15 @@
 #pragma once
-#include <QMainWindow>
+#include <QtCore/QObject>
 
-class network
+class networkAPI: public QObject
 {
 	Q_OBJECT
 
 public:
+	networkAPI();
+	~networkAPI();
 	 bool CheckLogin(QString username, QString password);
 private:
-	QString url;
+	
 };
 

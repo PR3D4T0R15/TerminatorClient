@@ -99,7 +99,14 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_pass"/>
+            <widget class="QLineEdit" name="lineEdit_pass">
+             <property name="inputMethodHints">
+              <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+             </property>
+             <property name="echoMode">
+              <enum>QLineEdit::Password</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -119,8 +126,6 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="../Terminator_client.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
