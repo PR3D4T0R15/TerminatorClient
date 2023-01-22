@@ -4,6 +4,7 @@
 #include "ui_loginwindow.h"
 #include <QMessageBox>
 #include <QApplication>
+#include <qDebug>
 
 loginWindow::loginWindow(QWidget* parent) :
     QMainWindow(parent),
@@ -52,5 +53,9 @@ void loginWindow::on_pushButton_nowy_clicked()
 {
     newUser window;
     window.exec();
+
+    networkAPI net;
+    QString test = net.GetData("Mateusz", "mateusz", "Do zrobienia", "one");
+    qDebug() << test;
 }
 
