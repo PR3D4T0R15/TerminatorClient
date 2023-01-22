@@ -1,9 +1,10 @@
-#include "loginwindow.h"
+﻿#include "loginwindow.h"
 #include "network.h"
 #include "ui_loginwindow.h"
 #include <QMessageBox>
+#include <QApplication>
 
-loginWindow::loginWindow(QWidget *parent) :
+loginWindow::loginWindow(QWidget* parent) :
     QMainWindow(parent),
     ui(new Ui::loginWindow)
 {
@@ -23,17 +24,29 @@ void loginWindow::on_pushButton_login_clicked()
     QString username = ui->lineEdit_login->text();
     QString password = ui->lineEdit_pass->text();
 
+    if (username == "" && password == "")
+    {
+        QMessageBox::critical(this, "BŁĄD", "Puste pola hasła i nazwy użytkownika");
+        return;
+    }
+
     networkAPI net;
     bool status = net.CheckLogin(username, password);
 
     if (!status)
     {
-        QMessageBox::critical(this, QString::fromUtf8("B�AD LOGOWANIA"), tr("Zly login lub haslo"));
+        QMessageBox::critical(this, "BŁĄD", "Zły login lub hasło");
+        return;
     }
     else
     {
         this->hide();
     }
 
+}
+
+void loginWindow::on_pushButton_nowy_clicked()
+{
+    
 }
 

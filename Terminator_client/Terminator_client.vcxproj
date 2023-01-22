@@ -85,9 +85,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\loginwindow.cpp" />
     <ClCompile Include="src\network.cpp" />
     <QtRcc Include="Terminator_client.qrc" />
-    <ClCompile Include="src\loginwindow.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
