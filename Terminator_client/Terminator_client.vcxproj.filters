@@ -34,9 +34,15 @@
     <ClCompile Include="src\loginwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\network.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\loginwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\network.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -44,5 +50,22 @@
     <QtUic Include="src\loginwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\img\add.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\logo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\remove.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\send.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

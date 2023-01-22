@@ -1,5 +1,7 @@
 #include "loginwindow.h"
+#include "network.h"
 #include <QtWidgets/QApplication>
+#include <QNetworkRequest>
 
 int main(int argc, char *argv[])
 {
