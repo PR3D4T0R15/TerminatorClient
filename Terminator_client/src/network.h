@@ -8,12 +8,16 @@ class networkAPI: public QObject
 public:
 	networkAPI();
 	~networkAPI();
-	 bool CheckLogin(QString username, QString password);
-	 bool CreateUser(QString username, QString password, QString newUsername, QString newPassword);
-	 QString GetData(QString username, QString password, QString listName, QString type);
-	 bool PutData(QString login, QString password, QString listName, QJsonObject data);
-	 bool DelData(QString login, QString password, QString listName);
-	 bool CopyData(QString login, QString password, QString listName, QString destUser);
+	//user managment
+	bool CheckLogin(QString username, QString password);
+	bool CreateUser(QString username, QString password, QString newUsername, QString newPassword);
+	//data managment
+	QString GetData(QString username, QString password, QString listName, QString type);
+	bool PutData(QString username, QString password, QString listName, QByteArray data);
+	bool PostData(QString username, QString password, QString listName, QByteArray data);
+	bool DelData(QString username, QString password, QString listName);
+	//copy managment
+	bool CopyData(QString username, QString password, QString listName, QString destUser);
 private:
 	
 };

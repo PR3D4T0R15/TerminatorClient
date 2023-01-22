@@ -122,10 +122,96 @@ QString networkAPI::GetData(QString username, QString password, QString listName
 
     QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
 
+    if (status_code == "404")
+    {
+        return "ERROR";
+    }
+
     line = reply->readAll();
 
     qDebug() << line;
 
     return line;
     
+}
+
+bool networkAPI::PutData(QString username, QString password, QString listName, QByteArray data)
+{
+    return false;
+}
+
+bool networkAPI::PostData(QString username, QString password, QString listName, QByteArray data)
+{
+    return false;
+}
+
+bool networkAPI::DelData(QString username, QString password, QString listName)
+{
+    QByteArray usernameByte = username.toUtf8();
+    QByteArray passwordByte = password.toUtf8();
+    QByteArray listNameByte = listName.toUtf8();
+
+    QNetworkAccessManager* manager = new QNetworkAccessManager;
+    QNetworkRequest request;
+    QByteArray line;
+    QEventLoop eventLoop;
+
+    request.setUrl(QUrl("http://192.168.219.132:8080/data"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader("LOGIN", usernameByte);
+    request.setRawHeader("PASS", passwordByte);
+    request.setRawHeader("LISTNAME", listNameByte);
+
+    QNetworkReply* reply = manager->deleteResource(request);
+    QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+    eventLoop.exec();
+
+    //zwraca kod 
+    QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
+
+    if (status_code == "200")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool networkAPI::CopyData(QString username, QString password, QString listName, QString destUser)
+{
+    QByteArray usernameByte = username.toUtf8();
+    QByteArray passwordByte = password.toUtf8();
+    QByteArray listNameByte = listName.toUtf8();
+    QByteArray destUserByte = destUser.toUtf8();
+
+    QNetworkAccessManager* manager = new QNetworkAccessManager;
+    QNetworkRequest request;
+    QByteArray line;
+    QEventLoop eventLoop;
+    QByteArray data;
+
+    request.setUrl(QUrl("http://192.168.219.132:8080/login"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader("LOGIN", usernameByte);
+    request.setRawHeader("PASS", passwordByte);
+    request.setRawHeader("LISTANME", listNameByte);
+    request.setRawHeader("DESTUSER", destUserByte);
+
+    QNetworkReply* reply = manager->put(request, data);
+    QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+    eventLoop.exec();
+
+    //zwraca kod 
+    QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
+
+    if (status_code == "200")
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
