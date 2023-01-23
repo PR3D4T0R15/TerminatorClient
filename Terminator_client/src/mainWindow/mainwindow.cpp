@@ -28,8 +28,8 @@ mainWindow::mainWindow(QWidget *parent) :
     QIcon IcoRemove(remove);
     QIcon IcoSend(send);
 
-    ui->pushButton_sendList->setIcon(IcoSend);
-    ui->pushButton_sendList->setIconSize(QSize(20, 20));
+    ui->pushButton_sendLists->setIcon(IcoSend);
+    ui->pushButton_sendLists->setIconSize(QSize(20, 20));
 
     ui->pushButton_addLists->setIcon(IcoAdd);
     ui->pushButton_addLists->setIconSize(QSize(20, 20));
