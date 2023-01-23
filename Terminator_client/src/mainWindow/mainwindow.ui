@@ -75,7 +75,23 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget_tasks"/>
+       <widget class="QTableWidget" name="tableWidget_tasks">
+        <column>
+         <property name="text">
+          <string>remove</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>checked</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>title</string>
+         </property>
+        </column>
+       </widget>
       </item>
      </layout>
     </item>
@@ -145,7 +161,23 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget_lists"/>
+       <widget class="QTableWidget" name="tableWidget_lists">
+        <column>
+         <property name="text">
+          <string>remove</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>checked</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>title</string>
+         </property>
+        </column>
+       </widget>
       </item>
      </layout>
     </item>
