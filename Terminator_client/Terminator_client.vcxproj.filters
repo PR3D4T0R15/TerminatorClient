@@ -43,7 +43,7 @@
     <ClCompile Include="src\mainWindow\mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\dialogSelectUser\dialogselectuser.cpp">
+    <ClCompile Include="src\dialogSelectUser\getusernickname.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,7 +60,7 @@
     <QtMoc Include="src\mainWindow\mainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="src\dialogSelectUser\dialogselectuser.h">
+    <QtMoc Include="src\dialogSelectUser\getusernickname.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -74,7 +74,7 @@
     <QtUic Include="src\mainWindow\mainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="src\dialogSelectUser\dialogSelectUser.ui">
+    <QtUic Include="src\dialogSelectUser\getusernickname.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

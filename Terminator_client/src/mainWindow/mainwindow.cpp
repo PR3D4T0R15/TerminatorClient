@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -7,7 +7,8 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QObject>
-#include <dialogSelectUser/dialogselectuser.h>
+#include <dialogSelectUser/getusernickname.h>
+#include <QMEssageBox>
 
 mainWindow::mainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -135,9 +136,8 @@ void mainWindow::on_pushButton_addLists_clicked()
 
 void mainWindow::on_pushButton_sendLists_clicked()
 {
-    dialogSelectUser dialog;
-    dialog.exec();
-    QObject::connect(dialog, dialogSelectUser::SendData, this, mainWindow::DialogReturnValues);
+    getUserNickname window;
+    QObject::connect(&window, getUserNickname::SendData, this, mainWindow::DialogReturnValues);
 }
 
 
@@ -166,7 +166,12 @@ void mainWindow::OnClickedTasks()
     }
 }
 
-void mainWindow::DialogReturnValues(QString username)
+void mainWindow::DialogReturnValues(QString username, QString form)
 {
-
+    networkAPI net;
+    bool status = net.CopyData(logedLogin, logedPass, form, username);
+    if (!status)
+    {
+        QMessageBox::critical(this, "BŁĄD", "Błąd wysyłania listy");
+    }
 }

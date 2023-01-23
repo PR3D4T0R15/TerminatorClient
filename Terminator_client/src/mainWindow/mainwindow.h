@@ -33,7 +33,7 @@ private slots:
     void on_pushButton_addTask_clicked();
     void OnClickedLists();
     void OnClickedTasks();
-    void DialogReturnValues(QString username);
+    void DialogReturnValues(QString username, QString form);
 
 signals:
 
