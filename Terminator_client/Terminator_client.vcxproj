@@ -90,7 +90,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\dialogSelectUser\getusernickname.cpp" />
+    <ClCompile Include="src\dialogSelectUser\dialogselectuser.cpp" />
+    <ClCompile Include="src\dialogSelectUser\newuser.cpp" />
     <ClCompile Include="src\loginWindows\loginwindow.cpp" />
     <ClCompile Include="src\mainWindow\mainwindow.cpp" />
     <ClCompile Include="src\network.cpp" />
@@ -102,7 +103,8 @@
     <QtMoc Include="src\loginWindows\loginwindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="src\dialogSelectUser\getusernickname.ui" />
+    <QtUic Include="src\dialogSelectUser\dialoselectuser.ui" />
+    <QtUic Include="src\dialogSelectUser\newuser.ui" />
     <QtUic Include="src\loginWindows\loginwindow.ui" />
     <QtUic Include="src\mainWindow\mainwindow.ui" />
     <QtUic Include="src\newUser\newuser.ui" />
@@ -127,7 +129,10 @@
     <QtMoc Include="src\mainWindow\mainwindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="src\dialogSelectUser\getusernickname.h" />
+    <QtMoc Include="src\dialogSelectUser\dialogselectuser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\dialogSelectUser\newuser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

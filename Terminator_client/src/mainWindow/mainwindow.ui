@@ -169,11 +169,6 @@
         </column>
         <column>
          <property name="text">
-          <string>checked</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
           <string>title</string>
          </property>
         </column>

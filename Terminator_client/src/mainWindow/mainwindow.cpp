@@ -2,12 +2,13 @@
 #include "ui_mainwindow.h"
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include "network.h"
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QObject>
-#include <dialogSelectUser/getusernickname.h>
+#include <dialogSelectUser/dialogselectuser.h>
 #include <QMEssageBox>
 
 mainWindow::mainWindow(QWidget *parent) :
@@ -55,13 +56,12 @@ mainWindow::~mainWindow()
     
 }
 
-void mainWindow::AddToList(QString name, int status)
+void mainWindow::AddToList(QString name)
 {
     int row = ui->tableWidget_lists->rowCount();
     ui->tableWidget_lists->setRowCount(row + 1);
     
     QTableWidgetItem* item[] = {
-        new QTableWidgetItem(),
         new QTableWidgetItem(),
         new QTableWidgetItem(),
     };
@@ -75,28 +75,20 @@ void mainWindow::AddToList(QString name, int status)
 
     QObject::connect(deleteIcoLists, &QPushButton::clicked, this, &mainWindow::OnClickedLists);
 
-    QCheckBox* completeBoxLists = new QCheckBox;
-    ui->tableWidget_lists->setCellWidget(row, 1, completeBoxLists);
-
     QLineEdit* nameFieldLists = new QLineEdit;
     nameFieldLists->setFrame(false);
-    ui->tableWidget_lists->setCellWidget(row, 2, nameFieldLists);
+    ui->tableWidget_lists->setCellWidget(row, 1, nameFieldLists);
 
     nameFieldLists->setText(name);
-
-    if (status == 1)
-    {
-        completeBoxLists->setChecked(true);
-    }
-
 }
 
-void mainWindow::AddtoTasks(QString name)
+void mainWindow::AddtoTasks(QString name, int status)
 {
     int row = ui->tableWidget_tasks->rowCount();
     ui->tableWidget_tasks->setRowCount(row + 1);
 
     QTableWidgetItem* item[] = {
+        new QTableWidgetItem(),
         new QTableWidgetItem(),
         new QTableWidgetItem(),
     };
@@ -110,11 +102,19 @@ void mainWindow::AddtoTasks(QString name)
 
     QObject::connect(deleteIcoTasks, &QPushButton::clicked, this, &mainWindow::OnClickedTasks);
 
+    QCheckBox* completeBoxLists = new QCheckBox;
+    ui->tableWidget_lists->setCellWidget(row, 1, completeBoxLists);
+
     QLineEdit* nameFieldTasks = new QLineEdit;
     nameFieldTasks->setFrame(false);
     ui->tableWidget_tasks->setCellWidget(row, 2, nameFieldTasks);
 
     nameFieldTasks->setText(name);
+
+    if (status == 1)
+    {
+        completeBoxLists->setChecked(true);
+    }
 }
 
 void mainWindow::ShowWindow(QString username, QString password)
@@ -125,25 +125,37 @@ void mainWindow::ShowWindow(QString username, QString password)
     networkAPI net;
     listNames = net.GetData(username, password, "", "all");
 
+    QJsonArray jsonArray = listNames.array();
+
     mainWindow::show();
+
+    QJsonValue val;
+    for (auto jsonObj : jsonArray)
+    {
+        val = jsonObj.toObject().value("name");
+        auto name = val.toString();
+        AddToList(name);
+    }
 }
 
 void mainWindow::on_pushButton_addLists_clicked()
 {
-    AddToList("test", 1);
+    AddToList("test");
 }
 
 
 void mainWindow::on_pushButton_sendLists_clicked()
 {
-    getUserNickname window;
-    QObject::connect(&window, getUserNickname::SendData, this, mainWindow::DialogReturnValues);
+    dialogSelectUser window;
+    window.exec();
+    QObject::connect(&window, &dialogSelectUser::SendData, this, &mainWindow::DialogReturnValues);
+    
 }
 
 
 void mainWindow::on_pushButton_addTask_clicked()
 {
-    AddtoTasks("test");
+    AddtoTasks("test", 1);
 }
 
 void mainWindow::OnClickedLists()

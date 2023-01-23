@@ -43,7 +43,10 @@
     <ClCompile Include="src\mainWindow\mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\dialogSelectUser\getusernickname.cpp">
+    <ClCompile Include="src\dialogSelectUser\dialogselectuser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dialogSelectUser\newuser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,7 +63,7 @@
     <QtMoc Include="src\mainWindow\mainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="src\dialogSelectUser\getusernickname.h">
+    <QtMoc Include="src\dialogSelectUser\dialogselectuser.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -74,7 +77,10 @@
     <QtUic Include="src\mainWindow\mainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="src\dialogSelectUser\getusernickname.ui">
+    <QtUic Include="src\dialogSelectUser\dialoselectuser.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\dialogSelectUser\newuser.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -97,5 +103,10 @@
     <Image Include="src\img\send.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\dialogSelectUser\newuser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

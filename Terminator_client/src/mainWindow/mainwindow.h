@@ -24,8 +24,8 @@ private:
     QJsonDocument currentList;
 
     void LoadJSON();
-    void AddToList(QString name, int status);
-    void AddtoTasks(QString name);
+    void AddToList(QString name);
+    void AddtoTasks(QString name, int status);
 
 private slots:
     void on_pushButton_addLists_clicked();
