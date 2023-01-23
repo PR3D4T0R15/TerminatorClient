@@ -7,6 +7,7 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QObject>
+#include <dialogSelectUser/dialogselectuser.h>
 
 mainWindow::mainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -134,7 +135,9 @@ void mainWindow::on_pushButton_addLists_clicked()
 
 void mainWindow::on_pushButton_sendLists_clicked()
 {
-
+    dialogSelectUser dialog;
+    dialog.exec();
+    QObject::connect(dialog, dialogSelectUser::SendData, this, mainWindow::DialogReturnValues);
 }
 
 
@@ -161,4 +164,9 @@ void mainWindow::OnClickedTasks()
         ui->tableWidget_tasks->removeRow(row);
         ui->tableWidget_tasks->setCurrentCell(0, 0);
     }
+}
+
+void mainWindow::DialogReturnValues(QString username)
+{
+
 }
