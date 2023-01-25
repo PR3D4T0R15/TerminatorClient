@@ -6,7 +6,6 @@
 #include<QNetworkReply>
 #include<QJsonObject>
 #include<QJsonDocument>
-#include<QNetworkAccessManager>
 #include<iostream>
 #include<QDebug>
 #include<QEventLoop>

@@ -9,6 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+Terminator_client/out/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

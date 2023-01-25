@@ -8,6 +8,11 @@ class networkAPI: public QObject
 public:
 	networkAPI();
 	~networkAPI();
+	//check status
+	bool IsSucces();
+	int StatusCode();
+	QString StatusInfo();
+
 	//user managment
 	bool CheckLogin(QString username, QString password);
 	bool CreateUser(QString username, QString password, QString newUsername, QString newPassword);
@@ -19,6 +24,7 @@ public:
 	//copy managment
 	bool CopyData(QString username, QString password, QString listName, QString destUser);
 private:
-	
+	int status;
+	bool status;	
 };
 
