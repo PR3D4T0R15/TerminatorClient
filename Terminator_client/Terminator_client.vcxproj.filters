@@ -31,18 +31,82 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\loginwindow.cpp">
+    <ClCompile Include="src\network.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\loginWindows\loginwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\newUser\newuser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mainWindow\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dialogSelectUser\dialogselectuser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dialogSelectUser\newuser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="src\loginwindow.h">
+    <QtMoc Include="src\loginWindows\loginwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\network.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\newUser\newuser.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\mainWindow\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="src\dialogSelectUser\dialogselectuser.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="src\loginwindow.ui">
+    <QtUic Include="src\loginWindows\loginwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="src\newUser\newuser.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\mainWindow\mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\dialogSelectUser\dialoselectuser.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="src\dialogSelectUser\newuser.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\img\add.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\logo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\remove.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\img\send.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\dialogSelectUser\newuser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
