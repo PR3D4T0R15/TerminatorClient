@@ -26,49 +26,26 @@ qt_standard_project_setup()
 ######## END ########
 
 ## DIR SETUP ##
-set(img_DIR "${CMAKE_SOURCE_DIR}/src/img")
-set(networkClass_DIR "${CMAKE_SOURCE_DIR}/src/networkClass")
+set(resources_DIR "${CMAKE_SOURCE_DIR}/resources")
+set(forms_DIR "${CMAKE_SOURCE_DIR}/forms")
+set(include_DIR "${CMAKE_SOURCE_DIR}/include")
+set(source_DIR "${CMAKE_SOURCE_DIR}/source")
 
-set(loginWindow_DIR "${CMAKE_SOURCE_DIR}/src/loginWindow")
-set(newUser_DIR "${CMAKE_SOURCE_DIR}/src/newUser")
-set(mainWindow_DIR "${CMAKE_SOURCE_DIR}/src/mainWindow")
-set(dialogSelectUser_DIR "${CMAKE_SOURCE_DIR}/src/dialogSelectUser")
 
-include_directories(${img_DIR})
-include_directories(${networkClass_DIR})
-include_directories(${loginWindow_DIR})
-include_directories(${newUser_DIR})
-include_directories(${mainWindow_DIR})
-include_directories(${dialogSelectUser_DIR})
+include_directories(${resources_DIR})
+include_directories(${forms_DIR})
+include_directories(${include_DIR})
+include_directories(${source_DIR})
+
 
 file(GLOB_RECURSE SOURCES
-    "${img_DIR}/*.png"
-    "${networkClass_DIR}/*.h"
-    "${networkClass_DIR}/*.cpp"
-    "${networkClass_DIR}/*.ui"
-
-    "${loginWindow_DIR}/*.h"
-    "${loginWindow_DIR}/*.cpp"
-    "${loginWindow_DIR}/*.ui"
-
-    "${newUser_DIR}/*.h"
-    "${newUser_DIR}/*.cpp"
-    "${newUser_DIR}/*.ui"
-
-    "${mainWindow_DIR}/*.h"
-    "${mainWindow_DIR}/*.cpp"
-    "${mainWindow_DIR}/*.ui"
-
-    "${dialogSelectUser_DIR}/*.h"
-    "${dialogSelectUser_DIR}/*.cpp"
-    "${dialogSelectUser_DIR}/*.ui"
-
-    "${CMAKE_SOURCE_DIR}/*.cpp"
-    "${CMAKE_SOURCE_DIR}/*.h"
-    "${CMAKE_SOURCE_DIR}/*.qrc"
+    "${resources_DIR}/img/*.png"
+    "${forms_DIR}/*.ui"
+    "${include_DIR}/*.h"
+    "${source_DIR}/*.cpp"
 )
 
-
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_AUTOUIC_SEARCH_PATHS} ${forms_DIR})
 
 
 ## EXECUTABLE ##

@@ -147,9 +147,9 @@ void mainWindow::on_pushButton_addLists_clicked()
 
 void mainWindow::on_pushButton_sendLists_clicked()
 {
-    dialogSelectUser window;
+    sendToUser window;
     window.exec();
-    QObject::connect(&window, &dialogSelectUser::SendData, this, &mainWindow::DialogReturnValues);
+    //QObject::connect(&window, &sendToUser::SendData, this, &mainWindow::DialogReturnValues);
     
 }
 

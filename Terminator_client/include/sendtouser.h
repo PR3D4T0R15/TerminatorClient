@@ -15,6 +15,9 @@ public:
     explicit sendToUser(QWidget *parent = nullptr);
     ~sendToUser();
 
+signals:
+    void SendData();
+
 private:
     Ui::sendToUser *ui;
 };
