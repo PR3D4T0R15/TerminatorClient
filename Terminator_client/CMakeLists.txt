@@ -6,9 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ## QT ##
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if (WIN32) 
     set(CMAKE_PREFIX_PATH $ENV{QTDIR})
@@ -41,25 +42,33 @@ include_directories(${mainWindow_DIR})
 include_directories(${dialogSelectUser_DIR})
 
 file(GLOB_RECURSE SOURCES
-    "${img_DIR}/*.*"
-    "${networkClass_DIR}/*.*"
-    "${loginWindow_DIR}/*.*"
-    "${newUser_DIR}/*.*"
-    "${mainWindow_DIR}/*.*"
-    "${dialogSelectUser_DIR}/*.*"
+    "${img_DIR}/*.png"
+    "${networkClass_DIR}/*.h"
+    "${networkClass_DIR}/*.cpp"
+    "${networkClass_DIR}/*.ui"
+
+    "${loginWindow_DIR}/*.h"
+    "${loginWindow_DIR}/*.cpp"
+    "${loginWindow_DIR}/*.ui"
+
+    "${newUser_DIR}/*.h"
+    "${newUser_DIR}/*.cpp"
+    "${newUser_DIR}/*.ui"
+
+    "${mainWindow_DIR}/*.h"
+    "${mainWindow_DIR}/*.cpp"
+    "${mainWindow_DIR}/*.ui"
+
+    "${dialogSelectUser_DIR}/*.h"
+    "${dialogSelectUser_DIR}/*.cpp"
+    "${dialogSelectUser_DIR}/*.ui"
 
     "${CMAKE_SOURCE_DIR}/*.cpp"
     "${CMAKE_SOURCE_DIR}/*.h"
     "${CMAKE_SOURCE_DIR}/*.qrc"
 )
 
-set(CMAKE_AUTOUIC_SEARCH_PATHS
-    ${CMAKE_AUTOUIC_SEARCH_PATHS}
-    ${loginWindow_DIR}
-    ${newUser_DIR}
-    ${mainWindow_DIR}
-    ${dialogSelectUser_DIR}
-)
+
 
 
 ## EXECUTABLE ##

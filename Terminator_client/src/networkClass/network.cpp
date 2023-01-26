@@ -15,16 +15,44 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
-
-
 networkAPI::networkAPI()
 {
-
+    returnCode = 0;
+    isSuccess = false;
 }
 
 networkAPI::~networkAPI()
 {
 
+}
+
+bool networkAPI::IsSuccess()
+{
+    return isSuccess;
+}
+
+int networkAPI::StatusCode()
+{
+    return returnCode;
+}
+
+QString networkAPI::StatusInfo()
+{
+    switch (returnCode)
+    {
+    case 200:
+        return "OK";
+        break;
+    case 201:
+        return "Created";
+        break;
+    case 202:
+        return "Accepted";
+        break;
+    default:
+        return "Error receiving return code ";
+        break;
+    }
 }
 
 

@@ -8,8 +8,9 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QObject>
-#include <dialogSelectUser/dialogselectuser.h>
+#include <sendtouser.h>
 #include <QMEssageBox>
+#include <QTableWidget>
 
 mainWindow::mainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -32,9 +33,9 @@ mainWindow::mainWindow(QWidget *parent) :
     ui->tableWidget_lists->setShowGrid(false);
     ui->tableWidget_lists->setStyleSheet("QTableView::item{border - bottom: 1px solid #d6d9dc;}");
 
-    QPixmap add(":/Terminator_client/src/img/add.png");
-    QPixmap remove(":/Terminator_client/src/img/remove.png");
-    QPixmap send(":/Terminator_client/src/img/send.png");
+    QPixmap add(":/Terminator_client/img/add.png");
+    QPixmap remove(":/Terminator_client/img/remove.png");
+    QPixmap send(":/Terminator_client/img/send.png");
 
     QIcon IcoAdd(add);
     QIcon IcoRemove(remove);

@@ -1,5 +1,5 @@
-#include "loginWindows/loginwindow.h"
-#include "mainWindow/mainwindow.h"
+#include "mainwindow.h"
+#include "loginwindow.h"
 #include "network.h"
 #include <QtWidgets/QApplication>
 #include <QCoreApplication>
