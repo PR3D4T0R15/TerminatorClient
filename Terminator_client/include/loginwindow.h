@@ -15,13 +15,13 @@ public:
     explicit loginWindow(QWidget *parent = nullptr);
     ~loginWindow();
 
-private slots:
-    void on_pushButton_login_clicked();
-    void on_pushButton_nowy_clicked();
-
 private:
     Ui::loginWindow *ui;
-
+	
+private slots:
+    void on_pushButton_login_clicked();
+    void on_pushButton_new_clicked();
+	
 signals:
     void LoginSucces(QString username, QString password);
 };

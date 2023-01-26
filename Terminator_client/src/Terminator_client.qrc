@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/Terminator_client">
-        <file>src/img/add.png</file>
-        <file>src/img/logo.ico</file>
-        <file>src/img/logo.png</file>
-        <file>src/img/remove.png</file>
-        <file>src/img/send.png</file>
-    </qresource>
-</RCC>

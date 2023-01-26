@@ -1,27 +1,22 @@
 ﻿#include "loginwindow.h"
-#include "network.h"
-#include "newUser/newuser.h"
 #include "ui_loginwindow.h"
+#include "network.h"
+#include "newuser.h"
 #include <QMessageBox>
 #include <QApplication>
 #include <qDebug>
 #include <QJsonDocument>
 
-loginWindow::loginWindow(QWidget* parent) :
+loginWindow::loginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
-    QPixmap pix(":/Terminator_client/src/img/logo.png");
-    ui->label_img->setPixmap(pix);
-    ui->label_img->setScaledContents(true);
-    
 }
 
 loginWindow::~loginWindow()
 {
     delete ui;
-    
 }
 
 void loginWindow::on_pushButton_login_clicked()
@@ -31,7 +26,7 @@ void loginWindow::on_pushButton_login_clicked()
 
     if (username == "" && password == "")
     {
-        QMessageBox::critical(this, "BŁĄD", "Puste pola hasła i nazwy użytkownika");
+        QMessageBox::critical(this, "BĹÄ„D", "Puste pola hasĹ‚a i nazwy uĹĽytkownika");
         return;
     }
 
@@ -40,7 +35,7 @@ void loginWindow::on_pushButton_login_clicked()
 
     if (!status)
     {
-        QMessageBox::critical(this, "BŁĄD", "Zły login lub hasło");
+        QMessageBox::critical(this, "BĹÄ„D", "ZĹ‚y login lub hasĹ‚o");
         return;
     }
     else
@@ -51,9 +46,8 @@ void loginWindow::on_pushButton_login_clicked()
 
 }
 
-void loginWindow::on_pushButton_nowy_clicked()
+void loginWindow::on_pushButton_new_clicked()
 {
     newUser window;
     window.exec();
 }
-
