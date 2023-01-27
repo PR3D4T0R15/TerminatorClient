@@ -20,8 +20,8 @@
    <string>Terminator</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../img/logo.ico</normaloff>../img/logo.ico</iconset>
+   <iconset resource="../resources/Terminator_client.qrc">
+    <normaloff>:/Terminator_client/img/logo.ico</normaloff>:/Terminator_client/img/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -43,7 +43,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../img/logo.png</pixmap>
+       <pixmap resource="../resources/Terminator_client.qrc">:/Terminator_client/img/logo.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -100,7 +100,11 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_pass"/>
+              <widget class="QLineEdit" name="lineEdit_pass">
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -174,6 +178,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources/Terminator_client.qrc"/>
+ </resources>
  <connections/>
 </ui>

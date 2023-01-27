@@ -14,7 +14,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 if (WIN32) 
     set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 elseif(UNIX)
-    #set(CMAKE_PREFIX_PATH $ENV{QTDIR})
+    set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 endif()
 
 ######## QT PACKAGES ########
@@ -40,6 +40,7 @@ include_directories(${source_DIR})
 
 file(GLOB_RECURSE SOURCES
     "${resources_DIR}/img/*.png"
+    "${resources_DIR}/*.qrc"
     "${forms_DIR}/*.ui"
     "${include_DIR}/*.h"
     "${source_DIR}/*.cpp"

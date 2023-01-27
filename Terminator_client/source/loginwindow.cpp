@@ -26,7 +26,7 @@ void loginWindow::on_pushButton_login_clicked()
 
     if (username == "" && password == "")
     {
-        QMessageBox::critical(this, "BĹÄ„D", "Puste pola hasĹ‚a i nazwy uĹĽytkownika");
+        QMessageBox::critical(this, "BŁĄD", "Puste pola hasła i nazwy użytkownika");
         return;
     }
 
@@ -35,7 +35,7 @@ void loginWindow::on_pushButton_login_clicked()
 
     if (!status)
     {
-        QMessageBox::critical(this, "BĹÄ„D", "ZĹ‚y login lub hasĹ‚o");
+        QMessageBox::critical(this, "BŁĄD", "Zły login lub hasło");
         return;
     }
     else

@@ -11,6 +11,19 @@
       "buildCommandArgs": "",
       "ctestCommandArgs": "",
       "cmakeExecutable": "D:/LIBS/CMake/bin/cmake.exe"
+    },
+    {
+      "name": "x64-Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeExecutable": "D:/LIBS/CMake/bin/cmake.exe",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "variables": []
     }
   ]
 }
