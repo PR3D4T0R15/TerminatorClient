@@ -16,12 +16,18 @@ public:
     ~listForm();
 
     void SetText(QString text);
+    QString GetText();
+    void DisableEdit();
 
 private:
     Ui::listForm *ui;
 
 private slots:
     void on_lineEdit_name_editingFinished();
+    void on_pushButton_delete_clicked();
+
+signals:
+    void ButtonClickedList(QString text);
 };
 
 #endif // LISTFORM_H

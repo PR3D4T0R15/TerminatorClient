@@ -13,6 +13,7 @@
 #include "listForm/listform.h"
 #include <QMEssageBox>
 #include <QTableWidget>
+#include <QDebug>
 
 mainWindow::mainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -55,6 +56,8 @@ void mainWindow::AddToTasks(QString text, bool status)
 
     ui->listWidget_tasks->addItem(item);
     ui->listWidget_tasks->setItemWidget(item, task);
+
+    QObject::connect(task, &taskForm::ButtonClickedTask, this, &mainWindow::DeleteTask);
 }
 
 void mainWindow::AddToList(QString text)
@@ -67,6 +70,8 @@ void mainWindow::AddToList(QString text)
 
     ui->listWidget_lists->addItem(item);
     ui->listWidget_lists->setItemWidget(item, list);
+
+    QObject::connect(list, &listForm::ButtonClickedList, this, &mainWindow::DeleteList);
 }
 
 void mainWindow::ShowWindow(QString username, QString password)
@@ -86,5 +91,35 @@ void mainWindow::on_pushButton_addTask_clicked()
 void mainWindow::on_pushButton_addLists_clicked()
 {
     AddToList("Do zrobienia");
+}
+
+void mainWindow::DeleteList(QString text)
+{
+    int rows = ui->listWidget_lists->count();
+    for (int i = 0; i < rows; i++)
+    {
+        QListWidgetItem* itemLists = ui->listWidget_lists->item(i);
+        listForm* itemList = dynamic_cast<listForm*>(ui->listWidget_lists->itemWidget(itemLists));
+        if (itemList->GetText() == text)
+        {
+            delete itemLists;
+            break;
+        }
+    }
+}
+
+void mainWindow::DeleteTask(QString text)
+{
+    int rows = ui->listWidget_tasks->count();
+    for (int i = 0; i < rows; i++)
+    {
+        QListWidgetItem *itemTasks = ui->listWidget_tasks->item(i);
+        taskForm *itemTask = dynamic_cast<taskForm*>(ui->listWidget_tasks->itemWidget(itemTasks));
+        if (itemTask->GetText() == text)
+        {
+            delete itemTasks;
+            break;
+        }
+    }
 }
 

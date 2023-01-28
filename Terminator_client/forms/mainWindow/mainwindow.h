@@ -34,6 +34,8 @@ signals:
 
 public slots:
     void ShowWindow(QString username, QString Password);
+    void DeleteList(QString text);
+    void DeleteTask(QString text);
 };
 
 #endif // MAINWINDOW_H

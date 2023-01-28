@@ -21,8 +21,24 @@ void listForm::SetText(QString text)
     ui->lineEdit_name->setText(text);
 }
 
+QString listForm::GetText()
+{
+    return ui->lineEdit_name->text();
+}
+
+void listForm::DisableEdit()
+{
+    ui->lineEdit_name->setReadOnly(true);
+}
+
 void listForm::on_lineEdit_name_editingFinished()
 {
     ui->lineEdit_name->setReadOnly(true);
+}
+
+
+void listForm::on_pushButton_delete_clicked()
+{
+    emit ButtonClickedList(ui->lineEdit_name->text());
 }
 
