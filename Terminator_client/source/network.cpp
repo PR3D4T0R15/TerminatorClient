@@ -14,6 +14,7 @@
 
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QJsonArray>
 
 networkAPI::networkAPI()
 {
@@ -127,7 +128,7 @@ bool networkAPI::CreateUser(QString username, QString password, QString newUsern
 }
 
 //get data from server in json form
-QJsonDocument networkAPI::GetData(QString username, QString password, QString listName, QString type)
+QJsonArray networkAPI::GetData(QString username, QString password, QString listName, QString type)
 {
     QByteArray usernameByte = username.toUtf8();
     QByteArray passwordByte = password.toUtf8();
@@ -158,20 +159,87 @@ QJsonDocument networkAPI::GetData(QString username, QString password, QString li
     line = reply->readAll();
 
     QJsonDocument output = QJsonDocument::fromJson(line);
+    QJsonArray array = output.array();
 
-    return output;
+    return array;
     
 }
 
 //create data on server from given json
-bool networkAPI::PutData(QString username, QString password, QString listName, QJsonDocument data)
+bool networkAPI::PutData(QString username, QString password, QString listName, QJsonArray data)
 {
+    QJsonDocument jsonData = QJsonDocument(data);
+    QByteArray jsonBIN = jsonData.toJson(QJsonDocument::Compact);
+
+    QByteArray usernameByte = username.toUtf8();
+    QByteArray passwordByte = password.toUtf8();
+    QByteArray listNameByte = listName.toUtf8();
+
+    QNetworkAccessManager* manager = new QNetworkAccessManager;
+    QNetworkRequest request;
+    QByteArray line;
+    QEventLoop eventLoop;
+
+    QUrl url("http://192.168.219.132:8080/data");
+    
+    request.setUrl(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader("LOGIN", usernameByte);
+    request.setRawHeader("PASS", passwordByte);
+    request.setRawHeader("LISTNAME", listNameByte);
+
+    QNetworkReply* reply = manager->put(request, jsonBIN);
+    QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+    eventLoop.exec();
+
+    QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
+
+    line = reply->readAll();
+
+    if (status_code == "200")
+    {
+        return true;
+    }
+
     return false;
 }
 
 //update json filed in database
-bool networkAPI::PostData(QString username, QString password, QString listName, QJsonDocument data)
+bool networkAPI::PostData(QString username, QString password, QString listName, QJsonArray data)
 {
+    QJsonDocument jsonData = QJsonDocument(data);
+    QByteArray jsonBIN = jsonData.toJson(QJsonDocument::Compact);
+
+    QByteArray usernameByte = username.toUtf8();
+    QByteArray passwordByte = password.toUtf8();
+    QByteArray listNameByte = listName.toUtf8();
+
+    QNetworkAccessManager* manager = new QNetworkAccessManager;
+    QNetworkRequest request;
+    QByteArray line;
+    QEventLoop eventLoop;
+
+    QUrl url("http://192.168.219.132:8080/data");
+
+    request.setUrl(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setRawHeader("LOGIN", usernameByte);
+    request.setRawHeader("PASS", passwordByte);
+    request.setRawHeader("LISTNAME", listNameByte);
+
+    QNetworkReply* reply = manager->post(request, jsonBIN);
+    QObject::connect(manager, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+    eventLoop.exec();
+
+    QString status_code = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toString();
+
+    line = reply->readAll();
+
+    if (status_code == "200")
+    {
+        return true;
+    }
+
     return false;
 }
 
