@@ -41,7 +41,11 @@ include_directories(${source_DIR})
 file(GLOB_RECURSE SOURCES
     "${resources_DIR}/img/*.png"
     "${resources_DIR}/*.qrc"
-    "${forms_DIR}/*.ui"
+
+    "${forms_DIR}/*/*.cpp"
+    "${forms_DIR}/*/*.h"
+    "${forms_DIR}/*/*.ui"
+
     "${include_DIR}/*.h"
     "${source_DIR}/*.cpp"
 )

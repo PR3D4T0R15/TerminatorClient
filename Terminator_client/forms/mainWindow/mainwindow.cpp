@@ -8,7 +8,9 @@
 #include <QCheckBox>
 #include <QPushButton>
 #include <QObject>
-#include <sendtouser.h>
+#include "sendToUserWindow/sendtouser.h"
+#include "taskForm/taskform.h"
+#include "listForm/listform.h"
 #include <QMEssageBox>
 #include <QTableWidget>
 
@@ -42,6 +44,31 @@ mainWindow::~mainWindow()
     
 }
 
+void mainWindow::AddToTasks(QString text, bool status)
+{
+    taskForm *task = new taskForm();
+    task->SetText(text);
+    task->SetCheck(status);
+    
+    QListWidgetItem *item = new QListWidgetItem();
+    item->setSizeHint(task->sizeHint());
+
+    ui->listWidget_tasks->addItem(item);
+    ui->listWidget_tasks->setItemWidget(item, task);
+}
+
+void mainWindow::AddToList(QString text)
+{
+    listForm* list = new listForm();
+    list->SetText(text);
+
+    QListWidgetItem* item = new QListWidgetItem();
+    item->setSizeHint(list->sizeHint());
+
+    ui->listWidget_lists->addItem(item);
+    ui->listWidget_lists->setItemWidget(item, list);
+}
+
 void mainWindow::ShowWindow(QString username, QString password)
 {
     logedLogin = username;
@@ -49,3 +76,15 @@ void mainWindow::ShowWindow(QString username, QString password)
 
     mainWindow::show();
 }
+
+void mainWindow::on_pushButton_addTask_clicked()
+{
+    AddToTasks("testowy jeden", true);
+}
+
+
+void mainWindow::on_pushButton_addLists_clicked()
+{
+    AddToList("Do zrobienia");
+}
+

@@ -1,7 +1,7 @@
 ﻿#include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include "network.h"
-#include "newuser.h"
+#include "newUserWindow/newuser.h"
 #include <QMessageBox>
 #include <QApplication>
 #include <qDebug>

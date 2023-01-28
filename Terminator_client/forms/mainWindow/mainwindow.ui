@@ -20,7 +20,7 @@
    <string>Terminator</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/Terminator_client.qrc">
+   <iconset resource="../../resources/Terminator_client.qrc">
     <normaloff>:/Terminator_client/img/logo.ico</normaloff>:/Terminator_client/img/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -164,7 +164,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../resources/Terminator_client.qrc"/>
+  <include location="../../resources/Terminator_client.qrc"/>
  </resources>
  <connections/>
 </ui>
