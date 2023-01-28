@@ -279,7 +279,7 @@ bool networkAPI::DelData(QString username, QString password, QString listName)
 }
 
 
-//copy data to be accesible to another user
+//copy data to be accessible to another user
 bool networkAPI::CopyData(QString username, QString password, QString listName, QString destUser)
 {
     QByteArray usernameByte = username.toUtf8();
@@ -293,11 +293,11 @@ bool networkAPI::CopyData(QString username, QString password, QString listName, 
     QEventLoop eventLoop;
     QByteArray data;
 
-    request.setUrl(QUrl("http://192.168.219.132:8080/login"));
+    request.setUrl(QUrl("http://192.168.219.132:8080/datamove"));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setRawHeader("LOGIN", usernameByte);
     request.setRawHeader("PASS", passwordByte);
-    request.setRawHeader("LISTANME", listNameByte);
+    request.setRawHeader("LISTNAME", listNameByte);
     request.setRawHeader("DESTUSER", destUserByte);
 
     QNetworkReply* reply = manager->put(request, data);

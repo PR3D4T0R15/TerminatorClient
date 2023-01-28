@@ -74,6 +74,11 @@ void mainWindow::AddToList(QString text)
     QObject::connect(list, &listForm::ButtonClickedList, this, &mainWindow::DeleteList);
 }
 
+void mainWindow::LoadLists()
+{
+    //TODO
+}
+
 void mainWindow::ShowWindow(QString username, QString password)
 {
     logedLogin = username;
@@ -121,5 +126,34 @@ void mainWindow::DeleteTask(QString text)
             break;
         }
     }
+}
+
+void mainWindow::RecevieDataDestUSer(QString destUser, QString listName)
+{
+    if (destUser == "" || listName == "")
+    {
+        QMessageBox::critical(this, "BŁĄD", "Puste pola nazwy użytkownika i nazwy listy");
+        return;
+    }
+
+    networkAPI net;
+    bool status = net.CopyData(logedLogin, logedPass, listName, destUser);
+
+    if (!status)
+    {
+        QMessageBox::critical(this, "BŁĄD", "Nie skopiowano listy. Wystąpił problem");
+    }
+}
+
+
+void mainWindow::on_pushButton_sendLists_clicked()
+{
+    sendToUser dialog;
+    QObject::connect(&dialog, &sendToUser::SendData, this, &mainWindow::RecevieDataDestUSer);
+    dialog.setModal(true);
+    dialog.SetData(logedLogin, logedPass);
+    dialog.exec();
+    
+
 }
 
