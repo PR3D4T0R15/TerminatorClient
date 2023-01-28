@@ -17,8 +17,8 @@
    <string>Nowy użytkownik</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../Terminator_client.qrc">
-    <normaloff>:/Terminator_client/src/img/logo.ico</normaloff>:/Terminator_client/src/img/logo.ico</iconset>
+   <iconset resource="../resources/Terminator_client.qrc">
+    <normaloff>:/Terminator_client/img/logo.ico</normaloff>:/Terminator_client/img/logo.ico</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -142,7 +142,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../Terminator_client.qrc"/>
+  <include location="../resources/Terminator_client.qrc"/>
  </resources>
  <connections>
   <connection>

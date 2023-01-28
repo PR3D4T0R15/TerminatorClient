@@ -23,17 +23,12 @@ private:
     QJsonDocument listNames;
     QJsonDocument currentList;
 
-    void LoadJSON();
-    void AddToList(QString name);
-    void AddtoTasks(QString name, int status);
+    void AddToTasks(QString text, bool status);
+    void AddToList(QString text);
 
 private slots:
-    void on_pushButton_addLists_clicked();
-    void on_pushButton_sendLists_clicked();
     void on_pushButton_addTask_clicked();
-    void OnClickedLists();
-    void OnClickedTasks();
-    void DialogReturnValues(QString username, QString form);
+    void on_pushButton_addLists_clicked();
 
 signals:
 

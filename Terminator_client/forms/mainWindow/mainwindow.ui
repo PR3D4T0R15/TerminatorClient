@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>706</width>
-    <height>589</height>
+    <width>693</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,14 +20,14 @@
    <string>Terminator</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../Terminator_client.qrc">
-    <normaloff>:/Terminator_client/src/img/logo.ico</normaloff>:/Terminator_client/src/img/logo.ico</iconset>
+   <iconset resource="../../resources/Terminator_client.qrc">
+    <normaloff>:/Terminator_client/img/logo.ico</normaloff>:/Terminator_client/img/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>
-   <layout class="QGridLayout" name="gridLayout" columnstretch="70,130">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="20,40">
     <item row="0" column="1">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -75,23 +75,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget_tasks">
-        <column>
-         <property name="text">
-          <string>remove</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>checked</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>title</string>
-         </property>
-        </column>
-       </widget>
+       <widget class="QListWidget" name="listWidget_tasks"/>
       </item>
      </layout>
     </item>
@@ -161,18 +145,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QTableWidget" name="tableWidget_lists">
-        <column>
-         <property name="text">
-          <string>remove</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>title</string>
-         </property>
-        </column>
-       </widget>
+       <widget class="QListWidget" name="listWidget_lists"/>
       </item>
      </layout>
     </item>
@@ -183,7 +156,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>706</width>
+     <width>693</width>
      <height>22</height>
     </rect>
    </property>
@@ -191,7 +164,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../../Terminator_client.qrc"/>
+  <include location="../../resources/Terminator_client.qrc"/>
  </resources>
  <connections/>
 </ui>
