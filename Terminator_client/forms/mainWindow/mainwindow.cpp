@@ -158,6 +158,8 @@ void mainWindow::DeleteList(QString text)
         if (itemList->GetText() == text)
         {
             delete itemLists;
+            networkAPI net;
+            net.DelData(logedLogin, logedPass, itemList->GetText());
             break;
         }
     }
