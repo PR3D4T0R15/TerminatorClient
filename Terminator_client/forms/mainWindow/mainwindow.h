@@ -48,6 +48,7 @@ public slots:
     void DeleteList(QString text);
     void DeleteTask(QString text);
     void RecevieDataDestUSer(QString destUser, QString listName);
+    void PutListOnServer(QString listname);
 };
 
 #endif // MAINWINDOW_H

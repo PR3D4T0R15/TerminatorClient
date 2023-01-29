@@ -82,6 +82,7 @@ void mainWindow::AddToList(QString text, bool byUser)
     ui->listWidget_lists->setItemWidget(item, list);
 
     QObject::connect(list, &listForm::ButtonClickedList, this, &mainWindow::DeleteList);
+    QObject::connect(list, &listForm::ListCreated, this, &mainWindow::PutListOnServer);
 }
 
 void mainWindow::LoadLists()
@@ -192,6 +193,13 @@ void mainWindow::RecevieDataDestUSer(QString destUser, QString listName)
     {
         QMessageBox::critical(this, "BŁĄD", "Nie skopiowano listy. Wystąpił problem");
     }
+}
+
+void mainWindow::PutListOnServer(QString listname)
+{
+    networkAPI net;
+    QJsonArray data;
+    net.PutData(logedLogin, logedPass, listname, data);
 }
 
 void mainWindow::on_pushButton_sendLists_clicked()

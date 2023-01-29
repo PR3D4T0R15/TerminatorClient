@@ -28,6 +28,7 @@ private slots:
 
 signals:
     void ButtonClickedList(QString text);
+    void ListCreated(QString listName);
 };
 
 #endif // LISTFORM_H
