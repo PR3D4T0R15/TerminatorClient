@@ -23,17 +23,15 @@ private:
     QString logedPass;
     QJsonArray listNames;
     QJsonArray currentList;
+    QString currentListName;
 
     void AddToTasks(QString text, bool status, bool byUser);
     void AddToList(QString text, bool byUser);
     void LoadLists();
     void ShowLists();
-    //void CreateList(QString listName);
 
     void LoadTasks(QString listName);
     void ShowTasks();
-
-    //void CreateTask();
 
 private slots:
     void on_pushButton_addTask_clicked();
@@ -49,6 +47,7 @@ public slots:
     void DeleteTask(QString text);
     void RecevieDataDestUSer(QString destUser, QString listName);
     void PutListOnServer(QString listname);
+    void TaskListChanged();
 };
 
 #endif // MAINWINDOW_H

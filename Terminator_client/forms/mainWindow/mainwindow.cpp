@@ -63,6 +63,7 @@ void mainWindow::AddToTasks(QString text, bool status, bool byUser)
     ui->listWidget_tasks->setItemWidget(item, task);
 
     QObject::connect(task, &taskForm::ButtonClickedTask, this, &mainWindow::DeleteTask);
+    QObject::connect(task, &taskForm::TaskChanged, this, &mainWindow::TaskListChanged);
 }
 
 void mainWindow::AddToList(QString text, bool byUser)
@@ -140,7 +141,7 @@ void mainWindow::ShowWindow(QString username, QString password)
 
 void mainWindow::on_pushButton_addTask_clicked()
 {
-    AddToTasks("testowy jeden", true, true);
+    AddToTasks("testowy jeden", false, true);
 }
 
 void mainWindow::on_pushButton_addLists_clicked()
@@ -163,6 +164,7 @@ void mainWindow::DeleteList(QString text)
             break;
         }
     }
+    ui->listWidget_tasks->clear();
 }
 
 void mainWindow::DeleteTask(QString text)
@@ -204,6 +206,38 @@ void mainWindow::PutListOnServer(QString listname)
     net.PutData(logedLogin, logedPass, listname, data);
 }
 
+void mainWindow::TaskListChanged()
+{
+    QJsonArray tempArray;
+
+    int rows = ui->listWidget_tasks->count();
+    for (int i = 0; i < rows; i++)
+    {
+        QListWidgetItem* itemTasks = ui->listWidget_tasks->item(i);
+        taskForm* itemTask = dynamic_cast<taskForm*>(ui->listWidget_tasks->itemWidget(itemTasks));
+        int status = itemTask->GetCheck();
+        QString text = itemTask->GetText();
+
+        QJsonObject object;
+        if (status == 2)
+        {
+            object["status"] = "TRUE";
+        }
+        else
+        {
+            object["status"] = "FALSE";
+        }
+        object["nazwa"] = text;
+
+        tempArray.append(object);
+    }
+
+    currentList = tempArray;
+
+    networkAPI net;
+    bool status = net.PostData(logedLogin, logedPass, currentListName, currentList);
+}
+
 void mainWindow::on_pushButton_sendLists_clicked()
 {
     sendToUser dialog;
@@ -211,8 +245,6 @@ void mainWindow::on_pushButton_sendLists_clicked()
     dialog.setModal(true);
     dialog.SetData(logedLogin, logedPass);
     dialog.exec();
-    
-
 }
 
 void mainWindow::on_listWidget_lists_itemActivated(QListWidgetItem* item)
@@ -220,6 +252,7 @@ void mainWindow::on_listWidget_lists_itemActivated(QListWidgetItem* item)
     listForm* itemList = dynamic_cast<listForm*>(ui->listWidget_lists->itemWidget(item));
     QString name = itemList->GetText();
 
+    currentListName = name;
     LoadTasks(name);
     ShowTasks();
 }
