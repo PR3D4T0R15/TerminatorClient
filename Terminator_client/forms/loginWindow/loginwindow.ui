@@ -20,7 +20,7 @@
    <string>Terminator</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/Terminator_client.qrc">
+   <iconset resource="../../resources/Terminator_client.qrc">
     <normaloff>:/Terminator_client/img/logo.ico</normaloff>:/Terminator_client/img/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -43,7 +43,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../resources/Terminator_client.qrc">:/Terminator_client/img/logo.png</pixmap>
+       <pixmap resource="../../resources/Terminator_client.qrc">:/Terminator_client/img/logo.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -179,6 +179,7 @@
   </widget>
  </widget>
  <resources>
+  <include location="../../resources/Terminator_client.qrc"/>
   <include location="../resources/Terminator_client.qrc"/>
  </resources>
  <connections/>

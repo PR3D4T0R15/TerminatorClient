@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QJsonArray>
+#include <QListWidgetItem>
 
 namespace Ui {
 class mainWindow;
@@ -23,17 +24,22 @@ private:
     QJsonArray listNames;
     QJsonArray currentList;
 
-    void AddToTasks(QString text, bool status);
-    void AddToList(QString text);
+    void AddToTasks(QString text, bool status, bool byUser);
+    void AddToList(QString text, bool byUser);
     void LoadLists();
+    void ShowLists();
     //void CreateList(QString listName);
-    //void LoadTasks();
+
+    void LoadTasks(QString listName);
+    void ShowTasks();
+
     //void CreateTask();
 
 private slots:
     void on_pushButton_addTask_clicked();
     void on_pushButton_addLists_clicked();
     void on_pushButton_sendLists_clicked();
+    void on_listWidget_lists_itemActivated(QListWidgetItem *item);
 
 signals:
 

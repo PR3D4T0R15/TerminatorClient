@@ -35,6 +35,9 @@ void taskForm::SetCheck(bool status)
 void taskForm::DisableEdit()
 {
     ui->lineEdit_name->setReadOnly(true);
+    ui->lineEdit_name->setDisabled(true);
+    ui->lineEdit_name->setStyleSheet("background-color: rgba(0, 0, 0, 1)");
+    ui->lineEdit_name->setStyleSheet("color: rgb(0, 0, 0)");
 }
 
 void taskForm::on_pushButton_delete_clicked()
@@ -45,5 +48,8 @@ void taskForm::on_pushButton_delete_clicked()
 void taskForm::on_lineEdit_name_editingFinished()
 {
     ui->lineEdit_name->setReadOnly(true);
+    ui->lineEdit_name->setDisabled(true);
+    ui->lineEdit_name->setStyleSheet("background-color: rgba(0, 0, 0, 1)");
+    ui->lineEdit_name->setStyleSheet("color: rgb(0, 0, 0)");
 }
 

@@ -45,11 +45,16 @@ mainWindow::~mainWindow()
     
 }
 
-void mainWindow::AddToTasks(QString text, bool status)
+void mainWindow::AddToTasks(QString text, bool status, bool byUser)
 {
     taskForm *task = new taskForm();
     task->SetText(text);
     task->SetCheck(status);
+
+    if (byUser == false)
+    {
+        task->DisableEdit();
+    }
     
     QListWidgetItem *item = new QListWidgetItem();
     item->setSizeHint(task->sizeHint());
@@ -60,10 +65,15 @@ void mainWindow::AddToTasks(QString text, bool status)
     QObject::connect(task, &taskForm::ButtonClickedTask, this, &mainWindow::DeleteTask);
 }
 
-void mainWindow::AddToList(QString text)
+void mainWindow::AddToList(QString text, bool byUser)
 {
     listForm* list = new listForm();
     list->SetText(text);
+
+    if (byUser == false)
+    {
+        list->DisableEdit();
+    }
 
     QListWidgetItem* item = new QListWidgetItem();
     item->setSizeHint(list->sizeHint());
@@ -76,7 +86,45 @@ void mainWindow::AddToList(QString text)
 
 void mainWindow::LoadLists()
 {
-    //TODO
+    networkAPI net;
+    listNames = net.GetData(logedLogin, logedPass, "", "all");
+}
+
+void mainWindow::ShowLists()
+{
+    for (int i = 0; i < listNames.count(); i++)
+    {
+        QJsonObject list = listNames.at(i).toObject();
+        QString name = list.value("name").toString();
+
+        AddToList(name, false);
+    }
+}
+
+void mainWindow::LoadTasks(QString listName)
+{
+    networkAPI net;
+    currentList = net.GetData(logedLogin, logedPass, listName, "one");
+}
+
+void mainWindow::ShowTasks()
+{
+    ui->listWidget_tasks->clear();
+    for (int i = 0; i < currentList.count(); i++)
+    {
+        QJsonObject list = currentList.at(i).toObject();
+        QString name = list.value("nazwa").toString();
+        QString status = list.value("status").toString();
+
+        if (status == "TRUE")
+        {
+            AddToTasks(name, true, false);
+        }
+        else if (status == "FALSE")
+        {
+            AddToTasks(name, false, false);
+        }
+    }
 }
 
 void mainWindow::ShowWindow(QString username, QString password)
@@ -85,17 +133,18 @@ void mainWindow::ShowWindow(QString username, QString password)
     logedPass = password;
 
     mainWindow::show();
+    LoadLists();
+    ShowLists();
 }
 
 void mainWindow::on_pushButton_addTask_clicked()
 {
-    AddToTasks("testowy jeden", true);
+    AddToTasks("testowy jeden", true, true);
 }
-
 
 void mainWindow::on_pushButton_addLists_clicked()
 {
-    AddToList("Do zrobienia");
+    AddToList("Do zrobienia", true);
 }
 
 void mainWindow::DeleteList(QString text)
@@ -145,7 +194,6 @@ void mainWindow::RecevieDataDestUSer(QString destUser, QString listName)
     }
 }
 
-
 void mainWindow::on_pushButton_sendLists_clicked()
 {
     sendToUser dialog;
@@ -157,3 +205,11 @@ void mainWindow::on_pushButton_sendLists_clicked()
 
 }
 
+void mainWindow::on_listWidget_lists_itemActivated(QListWidgetItem* item)
+{
+    listForm* itemList = dynamic_cast<listForm*>(ui->listWidget_lists->itemWidget(item));
+    QString name = itemList->GetText();
+
+    LoadTasks(name);
+    ShowTasks();
+}
