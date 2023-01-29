@@ -20,12 +20,12 @@
    <string>Terminator Wyślij do</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/Terminator_client.qrc">
+   <iconset resource="../../resources/Terminator_client.qrc">
     <normaloff>:/Terminator_client/img/logo.ico</normaloff>:/Terminator_client/img/logo.ico</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="label_topic">
      <property name="text">
       <string>Wpisz nazwę użytkownika docelowego i nazwę listy do wysłania</string>
      </property>
@@ -50,7 +50,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_username">
        <property name="minimumSize">
         <size>
          <width>65</width>
@@ -112,7 +112,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_list">
        <property name="minimumSize">
         <size>
          <width>65</width>
@@ -197,7 +197,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../resources/Terminator_client.qrc"/>
+  <include location="../../resources/Terminator_client.qrc"/>
  </resources>
  <connections>
   <connection>

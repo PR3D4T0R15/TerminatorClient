@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QJsonDocument>
+#include <QJsonArray>
+#include <QListWidgetItem>
 
 namespace Ui {
 class mainWindow;
@@ -20,20 +21,33 @@ private:
     Ui::mainWindow *ui;
     QString logedLogin;
     QString logedPass;
-    QJsonDocument listNames;
-    QJsonDocument currentList;
+    QJsonArray listNames;
+    QJsonArray currentList;
+    QString currentListName;
 
-    void AddToTasks(QString text, bool status);
-    void AddToList(QString text);
+    void AddToTasks(QString text, bool status, bool byUser);
+    void AddToList(QString text, bool byUser);
+    void LoadLists();
+    void ShowLists();
+
+    void LoadTasks(QString listName);
+    void ShowTasks();
 
 private slots:
     void on_pushButton_addTask_clicked();
     void on_pushButton_addLists_clicked();
+    void on_pushButton_sendLists_clicked();
+    void on_listWidget_lists_itemActivated(QListWidgetItem *item);
 
 signals:
 
 public slots:
     void ShowWindow(QString username, QString Password);
+    void DeleteList(QString text);
+    void DeleteTask(QString text);
+    void RecevieDataDestUSer(QString destUser, QString listName);
+    void PutListOnServer(QString listname);
+    void TaskListChanged();
 };
 
 #endif // MAINWINDOW_H
