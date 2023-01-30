@@ -141,7 +141,7 @@ void mainWindow::ShowWindow(QString username, QString password)
 
 void mainWindow::on_pushButton_addTask_clicked()
 {
-    AddToTasks("testowy jeden", false, true);
+    AddToTasks("zadanie", false, true);
 }
 
 void mainWindow::on_pushButton_addLists_clicked()
